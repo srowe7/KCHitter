@@ -1,0 +1,51 @@
+﻿@model IEnumerable<KCHitterApp.Models.Player>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Players</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExitVelocity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trajectory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityContact)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlayerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExitVelocity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trajectory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityContact)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PlayerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PlayerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlayerID })
+        </td>
+    </tr>
+}
+
+</table>
