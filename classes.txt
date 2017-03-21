@@ -34,7 +34,8 @@ Hit
 -distance
 -angle X
 -angle Y
--velocity
+-exitVelocity
+
 -
 ----------
 
