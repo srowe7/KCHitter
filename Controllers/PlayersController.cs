@@ -6,18 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using KCHitterApp.Models;
+using KCHitterDAD.Models;
 
-namespace KCHitterApp.Controllers
+namespace KCHitterDAD.Controllers
 {
     public class PlayersController : Controller
     {
-        private KCHitterAppContext db = new KCHitterAppContext();
+        private KCHitterDADContext db = new KCHitterDADContext();
 
         // GET: Players
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Players.ToList());
+            var players = from p in db.Players
+                         select p;
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                players = players.Where(s => s.PlayerName.Contains(searchString));
+            }
+            return View(players);
         }
 
         // GET: Players/Details/5
@@ -48,7 +54,7 @@ namespace KCHitterApp.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PlayerID,PlayerName,ExitVelocity,Trajectory,QualityContact")] Player player)
+        public ActionResult Create([Bind(Include = "PlayerID,PlayerName,SessionID,Date,TotalHits,Pitches,GoodContact,BadContact,ExitVelocity")] Player player)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +88,7 @@ namespace KCHitterApp.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PlayerID,PlayerName,ExitVelocity,Trajectory,QualityContact")] Player player)
+        public ActionResult Edit([Bind(Include = "PlayerID,PlayerName,SessionID,Date,TotalHits,Pitches,GoodContact,BadContact,ExitVelocity")] Player player)
         {
             if (ModelState.IsValid)
             {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KCHitterApp.Models.Player>
+﻿@model IEnumerable<KCHitterDAD.Models.Player>
 
 @{
     ViewBag.Title = "Index";
@@ -8,6 +8,13 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm())
+    {
+    <p>
+        Player Name: @Html.TextBox("SearchString") <br/>
+        <input type="submit"value="Filter" />
+    </p>
+ }
 </p>
 <table class="table">
     <tr>
@@ -15,13 +22,25 @@
             @Html.DisplayNameFor(model => model.PlayerName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.SessionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pitches)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BadContact)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ExitVelocity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Trajectory)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QualityContact)
         </th>
         <th></th>
     </tr>
@@ -32,13 +51,25 @@
             @Html.DisplayFor(modelItem => item.PlayerName)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.SessionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pitches)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BadContact)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ExitVelocity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Trajectory)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QualityContact)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PlayerID }) |
