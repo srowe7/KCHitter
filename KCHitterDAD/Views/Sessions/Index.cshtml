@@ -1,0 +1,81 @@
+﻿@model IEnumerable<KCHitterDAD.Models.Session>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sessions</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Player.PlayerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pitches)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BadContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExitVelocity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trajectory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player.PlayerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pitches)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BadContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExitVelocity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trajectory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SessionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SessionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SessionID })
+        </td>
+    </tr>
+}
+
+</table>

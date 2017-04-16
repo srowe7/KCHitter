@@ -1,0 +1,74 @@
+﻿@model KCHitterDAD.Models.Session
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Session</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Player.PlayerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player.PlayerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pitches)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pitches)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalHits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalHits)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BadContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BadContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExitVelocity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExitVelocity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SessionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
