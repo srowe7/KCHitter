@@ -23,7 +23,7 @@
             @Html.DisplayFor(modelItem => item.PlayerName)
         </td>
         <td>
-            @Html.ActionLink("Add", "../Sessions/Create", new { id=item.PlayerID }) |
+            @Html.ActionLink("Add Session", "../Sessions/CreatePlayer?id=" + item.PlayerID, new { id = item.PlayerID }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.PlayerID }) |
             @Html.ActionLink("Details", "Details", new { id=item.PlayerID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.PlayerID })
