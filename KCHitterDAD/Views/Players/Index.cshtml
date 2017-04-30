@@ -23,7 +23,9 @@
             @Html.DisplayFor(modelItem => item.PlayerName)
         </td>
         <td>
-            @Html.ActionLink("Add Session", "../Sessions/CreatePlayer?id=" + item.PlayerID, new { id = item.PlayerID }) |
+            <!--Create Session currently non-functional-->
+           <!--@Html.RouteLink("Create Session", "CreateSession") |-->
+
             @Html.ActionLink("Edit", "Edit", new { id=item.PlayerID }) |
             @Html.ActionLink("Details", "Details", new { id=item.PlayerID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.PlayerID })

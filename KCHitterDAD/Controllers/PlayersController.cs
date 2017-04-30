@@ -122,6 +122,20 @@ namespace KCHitterDAD.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult PlayerSession([Bind(Include = "SessionID,Date,PlayerID,Pitches,TotalHits,GoodContact,BadContact,ExitVelocity")] Session session)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Sessions.Add(session);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

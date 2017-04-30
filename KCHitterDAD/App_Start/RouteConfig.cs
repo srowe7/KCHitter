@@ -18,6 +18,11 @@ namespace KCHitterDAD
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            
+            routes.MapRoute(
+                name: "CreateSession",
+                url: "{controller}/PlayerSession/{PlayerID}",
+                defaults: new { controller = "SessionsController.cs", action = "PlayerSession" });
         }
     }
 }

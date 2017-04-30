@@ -134,5 +134,18 @@ namespace KCHitterDAD.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult PlayerSession([Bind(Include = "SessionID,Date,PlayerID,Pitches,TotalHits,GoodContact,BadContact,ExitVelocity")] Session session)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Sessions.Add(session);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.PlayerID = new SelectList(db.Players, "PlayerID", "PlayerName", session.PlayerID);
+            return View(session);
+        }
     }
 }
