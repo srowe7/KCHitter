@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace KCHitterDAD.Models
-
 {
     public class ContactForm
     {
         [Required(ErrorMessage = "You must provide your name.")]
-        public string Name { get; set; }
+        public string SenderName { get; set; }
 
         [Required(ErrorMessage = "You must provide your email."), EmailAddress]
         public string Email { get; set; }

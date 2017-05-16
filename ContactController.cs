@@ -1,42 +1,37 @@
-﻿using KCHitterDAD.Models;
+﻿using KCHitterDAD;
+using KCHitterDAD.Models;
+using KCHitterDAD.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
-namespace KCHitterDAD.Controllers
+namespace KCHitterDaD.Controllers
 {
     public class ContactController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            return View(new ContactForm());
+            return View();
         }
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<PartialViewResult> Submit(ContactForm model)
+        public ActionResult Index(ContactForm myContactForm)
         {
-            bool isMessageSent = true;
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    await EmailService.SendContactForm(model);
-                }
-                catch (Exception ex)
-                {
-                    isMessageSent = false;
-                }
-            }
+            bool success;
+            string body = "<p>The following is a message from {0} ({1})</p><p>{2}</p>";
+            success =  SendMessage(string.Format(body, myContactForm.SenderName, myContactForm.Email, myContactForm.Message));
+            if (success )       
+                return View("ThankYou");
             else
-            {
-                isMessageSent = false;
-            }
-            return PartialView("_SubmitMessage", isMessageSent);
+                return View("MessageNotSent");
         }
+
+        public bool SendMessage(string message)
+        {
+            var msgService = new KCHitterDAD.Services.EmailService();
+           return msgService.Send(message);
+              }
+
+
     }
 }
